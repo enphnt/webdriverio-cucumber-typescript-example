@@ -2,3 +2,4 @@
 error-shots
 node_modules
 tsrc
+package-lock.json

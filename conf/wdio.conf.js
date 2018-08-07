@@ -1,13 +1,13 @@
 exports.config = {
-    
     //
     // ==================
     // Specify Test Files
     // ==================
-    // Define which test specs should run. The pattern is relative to the directory
-    // from which `wdio` was called. Notice that, if you are calling `wdio` from an
-    // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
-    // directory is where your package.json resides, so `wdio` will be called from there.
+    // Define which test specs should run. The pattern is relative to the
+    // directory from which `wdio` was called. Notice that, if you are calling
+    // `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script)
+    // then the current working directory is where your package.json resides, so
+    // `wdio` will be called from there.
     //
     specs: [
         './features/*.feature'
@@ -20,31 +20,33 @@ exports.config = {
     // ============
     // Capabilities
     // ============
-    // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
-    // time. Depending on the number of capabilities, WebdriverIO launches several test
-    // sessions. Within your capabilities you can overwrite the spec and exclude options in
-    // order to group specific specs to a specific capability.
+    // Define your capabilities here. WebdriverIO can run multiple capabilities
+    // at the same time. Depending on the number of capabilities, WebdriverIO
+    // launches several test sessions. Within your capabilities you can
+    // overwrite the spec and exclude options in order to group specific specs
+    // to a specific capability.
     //
-    // First, you can define how many instances should be started at the same time. Let's
-    // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
-    // set maxInstances to 1; wdio will spawn 3 processes. Therefore, if you have 10 spec
-    // files and you set maxInstances to 10, all spec files will get tested at the same time
-    // and 30 processes will get spawned. The property handles how many capabilities
-    // from the same test should run tests.
+    // First, you can define how many instances should be started at the same
+    // time. Let's say you have 3 different capabilities (Chrome, Firefox, and
+    // Safari) and you have set maxInstances to 1; wdio will spawn 3 processes.
+    // Therefore, if you have 10 spec files and you set maxInstances to 10, all
+    // spec files will get tested at the same time and 30 processes will get
+    // spawned. The property handles how many capabilities from the same test
+    // should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 5,
     //
-    // If you have trouble getting all important capabilities together, check out the
-    // Sauce Labs platform configurator - a great tool to configure your capabilities:
-    // https://docs.saucelabs.com/reference/platforms-configurator
+    // If you have trouble getting all important capabilities together, check
+    // out the Sauce Labs platform configurator - a great tool to configure your
+    // capabilities: https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
+        // maxInstances can get overwritten per capability. So if you have an
+        // in-house Selenium grid with only 5 firefox instance available you can
+        // make sure that not more than 5 instance gets started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome'
+        browserName: 'chrome',
     }],
     //
     // ===================
@@ -53,31 +55,23 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // By default WebdriverIO commands are executed in a synchronous way using
-    // the wdio-sync package. If you still want to run your tests in an async way
-    // e.g. using promises you can set the sync option to false.
+    // the wdio-sync package. If you still want to run your tests in an async
+    // way e.g. using promises you can set the sync option to false.
     sync: true,
     //
-    // Level of logging verbosity: silent | verbose | command | data | result | error
+    // Level of logging verbosity: silent | verbose | command | data | result |
+    // error
     logLevel: 'verbose',
     //
     // Enables colors for log output.
     coloredLogs: true,
     //
-    // Warns when a deprecated command is used
-    deprecationWarnings: true,
-    //
-    // If you only want to run your tests until a specific amount of tests have failed use
-    // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
-    //
     // Saves a screenshot to a given path if a command fails.
     screenshotPath: './error-shots/',
     //
-    // Set a base URL in order to shorten url command calls. If your `url` parameter starts
-    // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
-    // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
-    // gets prepended directly.
-    baseUrl: 'http://localhost',
+    // Set a base URL in order to shorten url command calls. If your url
+    // parameter starts with "/", then the base url gets prepended.
+    baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -89,10 +83,10 @@ exports.config = {
     // Default request retries count
     connectionRetryCount: 3,
     //
-    // Initialize the browser instance with a WebdriverIO plugin. The object should have the
-    // plugin name as key and the desired plugin options as properties. Make sure you have
-    // the plugin installed before running any tests. The following plugins are currently
-    // available:
+    // Initialize the browser instance with a WebdriverIO plugin. The object
+    // should have the plugin name as key and the desired plugin options as
+    // properties. Make sure you have the plugin installed before running any
+    // tests. The following plugins are currently available:
     // WebdriverCSS: https://github.com/webdriverio/webdrivercss
     // WebdriverRTC: https://github.com/webdriverio/webdriverrtc
     // Browserevent: https://github.com/webdriverio/browserevent
@@ -108,40 +102,69 @@ exports.config = {
     // },
     //
     // Test runner services
-    // Services take over a specific job you don't want to take care of. They enhance
-    // your test setup with almost no effort. Unlike plugins, they don't add new
-    // commands. Instead, they hook themselves up into the test process.
-    // services: [],//
+    // Services take over a specific job you don't want to take care of. They
+    // enhance your test setup with almost no effort. Unlike plugins, they don't
+    // add new commands. Instead, they hook themselves up into the test process.
+    services: ['selenium-standalone'],
+    //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html
     //
-    // Make sure you have the wdio adapter package for the specific framework installed
-    // before running any tests.
+    // Make sure you have the wdio adapter package for the specific framework
+    // installed before running any tests.
     framework: 'cucumber',
     //
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
-    // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['cucumber'],//
-    // If you are using Cucumber you need to specify the location of your step definitions.
+    // see also: http://webdriver.io/guide/testrunner/reporters.html
+    reporters: ['spec'],
+    //
+    // If you are using Cucumber you need to specify the location of your step
+    // definitions.
     cucumberOpts: {
-        compiler: ['ts:ts-node/register'],       // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-        require: ['./steps/*.ts'],        // <string[]> (file/dir) require files before executing features
-        backtrace: false,   // <boolean> show full backtrace for errors
-        dryRun: false,      // <boolean> invoke formatters without executing steps
-        failFast: false,    // <boolean> abort the run on first failure
-        format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        // <boolean> show full backtrace for errors
+        backtrace: false,
+        // <string[]> filetype:compiler used for processing required features
         colors: true,       // <boolean> disable colors in formatter output
-        snippets: true,     // <boolean> hide step definition snippets for pending steps
-        source: true,       // <boolean> hide source uris
-        profile: [],        // <string[]> (name) specify the profile to use
-        strict: false,      // <boolean> fail if there are any undefined or pending steps
-        tags: [],           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-        timeout: 20000,     // <number> timeout for step definitions
-        ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
+        compiler: ['ts:ts-node/register'],
+        // <boolean< Treat ambiguous definitions as errors
+        failAmbiguousDefinitions: true,
+        // <boolean> invoke formatters without executing steps
+        // dryRun: false,
+        // <boolean> abort the run on first failure
+        failFast: false,
+        // <string[]> (type[:path]) specify the output format, optionally supply 
+        // PATH to redirect formatter output (repeatable)
+        format: ['pretty'],
+        // <boolean> Enable this config to treat undefined definitions as
+        // warnings
+        ignoreUndefinedDefinitions: false,
+        // <string[]> ("extension:module") require files with the given
+        // EXTENSION after requiring MODULE (repeatable)
+        name: [],
+        // <boolean> hide step definition snippets for pending steps
+        snippets: true,
+        // <string> specify a custom snippet syntax
+        snippetSyntax: undefined,
+        // <boolean> hide source uris
+        source: true,
+        // <string[]> (name) specify the profile to use
+        profile: [],
+        // <string[]> (file/dir) require files before executing features
+        require: ['./steps/*.ts'],
+        // <boolean> fail if there are any undefined or pending steps
+        strict: true,
+        // <string> (expression) only execute the features or scenarios with
+        // tags matching the expression, see
+        // https://docs.cucumber.io/tag-expressions/
+        tagExpression: 'not @Pending',
+        // <boolean> add cucumber tags to feature or scenario name
+        tagsInTitle: false,
+        // <number> timeout for step definitions
+        timeout: 20000,
     },
-    
+
     //
     // =====
     // Hooks
@@ -253,4 +276,4 @@ exports.config = {
      */
     // onComplete: function(exitCode, config, capabilities) {
     // }
-}
+};

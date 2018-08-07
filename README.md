@@ -7,5 +7,5 @@ Simple example using:
 
 ## How to run
 ```
-npm run test
+npm run test-e2e
 ```
